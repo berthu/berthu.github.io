@@ -1,0 +1,15 @@
+[submodule "themes/tokiwa"]
+	path = themes/tokiwa
+	url = https://github.com/heyeshuang/hugo-theme-tokiwa
+[submodule "themes/hugo-tufte-dark"]
+	path = themes/hugo-tufte-dark
+	url = https://github.com/Seanny123/hugo-tufte-dark
+[submodule "themes/hugotex"]
+	path = themes/hugotex
+	url = https://github.com/HelloRusk/HugoTeX
+[submodule "themes/hugo-tufte"]
+	path = themes/hugo-tufte
+	url = https://github.com/slashformotion/hugo-tufte
+[submodule "themes/hugo-theme-texify"]
+	path = themes/hugo-theme-texify
+	url = https://github.com/queensferryme/hugo-theme-texify.git
