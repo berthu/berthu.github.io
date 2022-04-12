@@ -12,4 +12,4 @@
 	url = https://github.com/slashformotion/hugo-tufte
 [submodule "themes/hugo-theme-texify"]
 	path = themes/hugo-theme-texify
-	url = https://github.com/queensferryme/hugo-theme-texify.git
+	url = https://github.com/berthu/hugo-theme-texify

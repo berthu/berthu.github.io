@@ -1,7 +1,7 @@
 # About
 
-Test About
+Hi! This is my `github.io` page. I am a roboticist working in the field of vehicular automation.
 
-- 1
-- 2
-- 3
+![img](/img/photo.jpg)
+
+A nice day in San Francisco
