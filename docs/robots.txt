@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: http://berthu.github.io/sitemap.xml
+Sitemap: https://berthu.github.io/sitemap.xml
