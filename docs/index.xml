@@ -16,35 +16,10 @@
       <guid>https://berthu.github.io/about/</guid>
       
       <description>&lt;h1 id=&#34;about&#34;&gt;About&lt;/h1&gt;
-&lt;p&gt;Hi! This is my &lt;code&gt;github.io&lt;/code&gt; page. I am a roboticist working in vehicular automation.&lt;/p&gt;
+&lt;p&gt;Hi! This is my &lt;code&gt;github.io&lt;/code&gt; page. I am a roboticist and general manager at &lt;a href=&#34;https://www.cidi.ai/en/&#34;&gt;CiDi&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you are interested in autonomous mining, intelligent commercial vehicles, or V2X, please reach out to me over &lt;a href=&#34;https://www.linkedin.com/in/al-hu-sibo/&#34;&gt;LinkedIn&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://berthu.github.io/img/photo.jpg&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;
 &lt;p&gt;A nice day in San Francisco.&lt;/p&gt;
-&lt;h2 id=&#34;reading-list&#34;&gt;Reading List&lt;/h2&gt;
-&lt;h3 id=&#34;engineering&#34;&gt;Engineering&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;em&gt;NASA Systems Engineering Handbook&lt;/em&gt; (NASA/SP-2007-6105)&lt;/li&gt;
-&lt;li&gt;Hobbs, C. (2020) &lt;em&gt;Embedded Software Development for Safety-Critical Systems&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Leveson, N. (2011) &lt;em&gt;Engineering a Safer World: Systems Thinking Applied to Safety&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Frenzel, L.E. (2018) &lt;em&gt;Electronics Explained: Fundamentals for Engineers, Technicians, and Makers&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;computer-science-robotics--mathematics&#34;&gt;Computer Science, Robotics &amp;amp; Mathematics&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Sutton, R.S. &amp;amp; Barto, A.G. (2020) &lt;em&gt;Reinforcement Learning: An Introduction&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Lavalle, S.M. (2006) &lt;em&gt;Planning Algorithms&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Nocedal, J. &amp;amp; Wright, S.J. (2006) &lt;em&gt;Numerical Optimization&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;software-development&#34;&gt;Software Development&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Ford, N. et al (2022) &lt;em&gt;Software Architecture: The Hard Parts&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Aniche, M. (2022) &lt;em&gt;Effective Software Testing: A Developer&amp;rsquo;s Guide&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Nguyen, Q. (2022) &lt;em&gt;Advanced Python Programming&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Langtangen, H.P. (2014) &lt;em&gt;A Primer on Scientific Programming with Python&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;music&#34;&gt;Music&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;Gardner, J.E. (2013) &lt;em&gt;Bach: Music in the Castle of Heaven&lt;/em&gt;&lt;/li&gt;
-&lt;li&gt;Sandor, G. (1981) &lt;em&gt;On Piano Playing: Motion, Sound and Expression&lt;/em&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
       
     </item>

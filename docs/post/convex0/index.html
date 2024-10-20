@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  
+  <meta name="author" content="author">
+
+  
+  
+  <meta name="description" content="Here are some techniques that might be useful in convex optimization.
+Techniques relating to positive semi-definite matrices Definition: A symmetric matrix $M$ with real entries is positive-definite if the real number $z^{\intercal} M z &gt; 0$ for every nonzero column vector $z$. The matrix is positive semi-definite if the quantity is weakly positive.
+Note: A similar object can be defined for complex matrices, but instead of a symmetric matrix, consider a Hermitian matrix, or a complex matrix that is equal to its own complex conjugate.">
+  
+
+  
+  <link rel="icon" href="https://berthu.github.io/favicon.ico">
+
+  
+  
+  <meta name="keywords" content=" hugo  latex  theme ">
+  
+
+  
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css"
+  integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js"
+  integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js"
+  integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\[', right: '\\]', display: true },
+        { left: '$', right: '$', display: false },
+        { left: '\\(', right: '\\)', display: false }
+      ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+      throwOnError: false
+    });
+  });
+</script>
+
+
+  
+
+  
+  <meta property="og:title" content="Common Techniques for Convex Optimization Formulations" />
+<meta property="og:description" content="Here are some techniques that might be useful in convex optimization.
+Techniques relating to positive semi-definite matrices Definition: A symmetric matrix $M$ with real entries is positive-definite if the real number $z^{\intercal} M z &gt; 0$ for every nonzero column vector $z$. The matrix is positive semi-definite if the quantity is weakly positive.
+Note: A similar object can be defined for complex matrices, but instead of a symmetric matrix, consider a Hermitian matrix, or a complex matrix that is equal to its own complex conjugate." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://berthu.github.io/post/convex0/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-12-07T09:18:50+08:00" />
+<meta property="article:modified_time" content="2023-12-07T09:18:50+08:00" />
+
+
+
+  
+  <link rel="canonical" href="https://berthu.github.io/post/convex0/">
+
+  
+  
+  <meta itemprop="name" content="Common Techniques for Convex Optimization Formulations">
+<meta itemprop="description" content="Here are some techniques that might be useful in convex optimization.
+Techniques relating to positive semi-definite matrices Definition: A symmetric matrix $M$ with real entries is positive-definite if the real number $z^{\intercal} M z &gt; 0$ for every nonzero column vector $z$. The matrix is positive semi-definite if the quantity is weakly positive.
+Note: A similar object can be defined for complex matrices, but instead of a symmetric matrix, consider a Hermitian matrix, or a complex matrix that is equal to its own complex conjugate."><meta itemprop="datePublished" content="2023-12-07T09:18:50+08:00" />
+<meta itemprop="dateModified" content="2023-12-07T09:18:50+08:00" />
+<meta itemprop="wordCount" content="238">
+<meta itemprop="keywords" content="" />
+
+  
+  <link media="screen" rel="stylesheet" href='https://berthu.github.io/css/common.css'>
+  <link media="screen" rel="stylesheet" href='https://berthu.github.io/css/content.css'>
+
+  
+  
+  <title>Common Techniques for Convex Optimization Formulations - berthu.github.io</title>
+  
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Common Techniques for Convex Optimization Formulations"/>
+<meta name="twitter:description" content="Here are some techniques that might be useful in convex optimization.
+Techniques relating to positive semi-definite matrices Definition: A symmetric matrix $M$ with real entries is positive-definite if the real number $z^{\intercal} M z &gt; 0$ for every nonzero column vector $z$. The matrix is positive semi-definite if the quantity is weakly positive.
+Note: A similar object can be defined for complex matrices, but instead of a symmetric matrix, consider a Hermitian matrix, or a complex matrix that is equal to its own complex conjugate."/>
+
+
+  
+<link rel="stylesheet" href='https://berthu.github.io/css/single.css'>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <header id="header">
+  <h1>
+    <a href="https://berthu.github.io/">berthu.github.io</a>
+  </h1>
+
+  <nav>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/">Post</a>
+    </span>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/post/">Archives</a>
+    </span>
+    
+    <span class="nav-bar-item">
+      <a class="link" href="/about/">About</a>
+    </span>
+    
+  </nav>
+</header>
+
+    
+<main id="main" class="post">
+  
+  
+  <h1>Common Techniques for Convex Optimization Formulations</h1>
+  
+  
+  <article class="content">
+    
+    <p>Here are some techniques that might be useful in convex optimization.</p>
+<h2 id="techniques-relating-to-positive-semi-definite-matrices">Techniques relating to positive semi-definite matrices</h2>
+<p><em>Definition</em>: A symmetric matrix $M$ with real entries is positive-definite if the real number $z^{\intercal} M z &gt; 0$ for every nonzero column vector $z$. The matrix is positive semi-definite if the quantity is weakly positive.</p>
+<p><em>Note</em>: A similar object can be defined for complex matrices, but instead of a symmetric matrix, consider a Hermitian matrix, or a complex matrix that is equal to its own complex conjugate.</p>
+<p>Conceptually, the definiteness of a matrix describes the shape of its quadratic form, such that a minimum exists. Importantly, a function $f$ is convex if and only if its Hessian is positive semi-definite.</p>
+<h3 id="rank-one-square-matrices-are-positive-semi-definite">Rank-one square matrices are positive semi-definite</h3>
+<p>Matrices that can be written in the form $z z^{\intercal}$ where $z \in \mathbb{R}^n$ must be positive semi-definite, since for any $x$, $x^{\intercal} z z^{\intercal}x  = (z^{\intercal}x)^2 \ge 0$. It is called a rank-one matrix, since multiplying $z z^{\intercal}$ by any $x$ equals $z(z^{\intercal}x)$, which is just z, one-linearly independent column vector, multipled by a constant.</p>
+<p><em>Corollary</em>: Any finite sum of rank-one square matrices are positive semi-definite.</p>
+<h3 id="example">Example</h3>
+<p>Consider the function</p>
+<p>$$f(x_1,x_2) = x_1^2/x_2$$ on $\mathbb{R}_{++}^2$. Its Hessian is:</p>
+<p>$$ \nabla^2 f = \begin{bmatrix} 0 &amp; 1 \ 1 &amp; 0 \end{bmatrix} $$</p>
+<h3 id="heading"></h3>
+<h2 id="minimization-over-the-nonnegative-orthant">Minimization over the nonnegative orthant</h2>
+<h2 id="analyzing-whether-a-function-is-bounded-below">Analyzing whether a function is bounded below</h2>
+<h2 id="equivalent-problems">Equivalent problems</h2>
+<h2 id="ellipses">Ellipses</h2>
+<h2 id="patterns-related-to-dual-formulations">Patterns related to dual formulations</h2>
+<h2 id="resources">Resources</h2>
+
+    
+  </article>
+  <div class="paginator">
+    
+    <a></a>
+    
+    
+    <a></a>
+    
+  </div>
+  <div class="comment">
+    
+    
+    
+    
+    
+    
+  </div>
+  
+</main>
+
+    <footer id="footer">
+  <div>
+    <span>© 2019</span> - <span>2024</span>
+  </div>
+
+  <div>
+
+
+    
+  </div>
+
+  <div class="footnote">
+    <span><a class=link href=https://github.com/berthu>GitHub</a>,
+<a class=link href=https://twitter.com/alhu>Twitter</a> or
+<a class=link href=/index.xml>RSS</a> |
+<a class=link href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh target=_blank rel=noopener>CC BY-NC-SA 4.0</a>
+</span>
+    <span> 🍦 Theme </span>
+    <a class="link" href="https://github.com/queensferryme/hugo-theme-texify">TeXify</a>
+  </div>
+</footer>
+
+  </div>
+
+  
+  
+
+  
+  
+
+  
+  
+
+</body>
+
+</html>
