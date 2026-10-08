@@ -74,22 +74,23 @@
     color: var(--ink);
     padding: 1rem;
   }
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .split { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; }
   .label { margin: 0; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
-  .stepper { margin-top: 0.5rem; display: flex; align-items: center; gap: 0.375rem; }
+  .stepper { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.375rem; }
   .step {
-    width: 2.75rem; height: 2.75rem; flex: none;
+    width: 2.25rem; height: 2.25rem; flex: none;
     border: 0; border-radius: 999px; background: var(--band); color: var(--ink);
     display: flex; align-items: center; justify-content: center;
   }
   .step:disabled { opacity: 0.4; }
-  .step svg { width: 1rem; height: 1rem; }
+  .step svg { width: 0.875rem; height: 0.875rem; }
   #max {
+    display: block; margin: 0.5rem 0 0;
     width: 100%; min-width: 0; border: 0; background: transparent; color: var(--ink);
-    text-align: center; font-family: var(--display); font-size: 1.5rem; line-height: 1; outline: none;
+    text-align: center; font-family: var(--display); font-size: 1.875rem; line-height: 1; outline: none;
   }
   .sub { margin: 0.25rem 0 0; text-align: center; font-size: 0.75rem; color: var(--muted); }
-  .read { margin: 0.5rem 0 0; font-family: var(--display); font-size: 1.75rem; line-height: 1; letter-spacing: -0.02em; }
+  .read { margin: 0.5rem 0 0; font-family: var(--display); font-size: 2.25rem; line-height: 1; letter-spacing: -0.02em; }
   .plates { margin-top: 1rem; border-top: 1px solid var(--band); padding-top: 1rem; }
   .bar {
     display: flex; align-items: center; justify-content: center; gap: 0.25rem;
@@ -129,16 +130,16 @@
     <div class="split">
       <div>
         <p class="label">100% on</p>
-        <div class="stepper">
-          <button type="button" class="step" id="dec" aria-label="Decrease max by 2.5 kilograms">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"><path d="M5 12h14"/></svg>
-          </button>
-          <input id="max" inputmode="decimal" aria-label="Max kilograms" value="100">
-          <button type="button" class="step" id="inc" aria-label="Increase max by 2.5 kilograms">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-        </div>
+        <input id="max" inputmode="decimal" aria-label="Max kilograms" value="100">
         <p class="sub">kg max</p>
+      </div>
+      <div class="stepper">
+        <button type="button" class="step" id="inc" aria-label="Increase max by 2.5 kilograms">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <button type="button" class="step" id="dec" aria-label="Decrease max by 2.5 kilograms">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round"><path d="M5 12h14"/></svg>
+        </button>
       </div>
       <div>
         <p class="label" id="pct-label">80% reads</p>
