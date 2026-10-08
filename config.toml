@@ -21,7 +21,7 @@ theme = "hugo-theme-texify"        # theme directory name
 #title = "TeXify"                   # website title
 publishDir = "docs"
 
-[author]
+[params.author]
 email = "me@example.com" # your email
 name = "author"          # your name
 
