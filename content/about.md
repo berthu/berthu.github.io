@@ -7,3 +7,7 @@ We work on autonomous mining, self-driving trucks, perception, and V2X systems. 
 ![img](/img/photo.jpg)
 
 A nice day in San Francisco.
+
+# Tools
+
+- Load Rule: [10kg](/tools/load-rule-10kg.html) [15kg](/tools/load-rule-15kg.html) [20kg](/tools/load-rule-20kg.html)
