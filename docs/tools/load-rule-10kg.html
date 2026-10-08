@@ -120,10 +120,10 @@
   <header>
     <p class="eyebrow">10 kg bar</p>
     <h1>Load Rule</h1>
-    <p class="lede">Swipe the outer ring until the red 100% sits on your max. Every other percent lands on that fraction of it. A full turn is ×10.</p>
+    <p class="lede">Swipe the outer ring until the red 100% sits on your max. Every other percent lands on that fraction of it. A full turn is ×16.</p>
   </header>
   <div class="dial-wrap">
-    <div id="dial" role="slider" tabindex="0" aria-valuemin="20" aria-valuemax="200" aria-valuenow="100" aria-label="Percentage ring. Drag to set 100 percent on a weight. Tap a kilogram to jump there, or tap a percent to read it."></div>
+    <div id="dial" role="slider" tabindex="0" aria-valuemin="10" aria-valuemax="160" aria-valuenow="100" aria-label="Percentage ring. Drag to set 100 percent on a weight. Tap a kilogram to jump there, or tap a percent to read it."></div>
   </div>
   <p class="hint">Drag the ring, tap a weight, or tap a percent.</p>
   <section class="card">
@@ -153,7 +153,8 @@
   </section>
 </main>
 <script>
-const BAR = 10, MIN = 20, MAX = 200;
+const BAR = 10, MIN = 10, MAX = 160;
+const MOD = 360 / Math.log10(16);
 const SVGNS = "http://www.w3.org/2000/svg";
 const SANS = "IBM Plex Sans, ui-sans-serif, sans-serif";
 const DISPLAY = "Fraunces, Georgia, serif";
@@ -171,7 +172,7 @@ const PLATE_PX = { 25: [64, 14], 20: [56, 12], 15: [48, 10], 10: [40, 8], 5: [32
 
 const mod360 = (d) => ((d % 360) + 360) % 360;
 const angDist = (a, b) => Math.abs(mod360(a - b + 180) - 180);
-const kgAngle = (w) => Math.log10(w / 20) * 360;
+const kgAngle = (w) => Math.log10(w / 10) * MOD;
 const polar = (deg, r) => {
   const rad = (mod360(deg) * Math.PI) / 180;
   return { x: Math.sin(rad) * r, y: -Math.cos(rad) * r };
@@ -228,7 +229,7 @@ function nearestLoadable(exact) {
   return n < BAR ? null : n;
 }
 function percentScreenAngle(maxKg, pct) {
-  return mod360(kgAngle(maxKg) + Math.log10(pct / 100) * 360);
+  return mod360(kgAngle(maxKg) + Math.log10(pct / 100) * MOD);
 }
 function nearestPercent(maxKg, screenDeg) {
   let best = 100, bestD = 1e9;
@@ -239,7 +240,7 @@ function nearestPercent(maxKg, screenDeg) {
   return best;
 }
 function nearestKgMark(screenDeg) {
-  const w = 20 * 10 ** (mod360(screenDeg) / 360);
+  const w = 10 * 10 ** (mod360(screenDeg) / MOD);
   const n = Math.round(w / 5) * 5;
   if (n >= MAX) return MAX;
   if (n <= MIN) return MIN;
@@ -249,8 +250,7 @@ function neighborGapDeg(w) {
   const t = kgAngle(w);
   let gap = 360;
   if (w > MIN) gap = Math.min(gap, t - kgAngle(w - 5));
-  const next = w >= 195 ? MAX : w + 5;
-  const tNext = next === MAX ? 360 : kgAngle(next);
+  const tNext = kgAngle(Math.min(w + 5, MAX));
   gap = Math.min(gap, tNext - t);
   return gap;
 }
@@ -270,7 +270,7 @@ for (let p = 30; p <= 140; p += 1) {
   if (p === 100) continue;
   PERCENT_MARKS.push({
     pct: p,
-    local: Math.log10(p / 100) * 360,
+    local: Math.log10(p / 100) * MOD,
     major: p % 5 === 0,
     label: PERCENT_LABELS.has(p),
   });
@@ -301,7 +301,7 @@ function buildFixed() {
     svgEl("circle", { r: 134, fill: "none", stroke: "#1c1e1a", "stroke-width": 0.9 }),
     svgEl("circle", { r: 110, fill: "none", stroke: "#1c1e1a", "stroke-width": 0.55 }),
   );
-  for (let w = 25; w <= 195; w += 5) {
+  for (let w = 15; w <= 155; w += 5) {
     const plates = platesPerSide(w);
     const deg = kgAngle(w);
     const halfDeg = neighborGapDeg(w) / 2;
@@ -323,7 +323,7 @@ function buildFixed() {
   }
   for (let w = MIN; w < MAX; w += 5) {
     const a = kgAngle(w);
-    const major = w % 20 === 0;
+    const major = w % 20 === 0 || w === MIN;
     const mid = !major && w % 10 === 0;
     const inner = major ? 96.6 : mid ? 99.2 : 101.2;
     const p0 = polar(a, inner), p1 = polar(a, 108);
@@ -331,7 +331,7 @@ function buildFixed() {
       x1: q(p0.x), y1: q(p0.y), x2: q(p1.x), y2: q(p1.y),
       stroke: "#1c1e1a", "stroke-width": major ? 1.15 : mid ? 0.7 : 0.45,
     }));
-    const show = w <= 80 || (w <= 160 ? w % 10 === 0 : w % 20 === 0);
+    const show = w <= 80 || w % 10 === 0;
     if (show) {
       const at = polar(a, 89.2);
       const text = svgEl("text", {
@@ -560,7 +560,7 @@ dial.addEventListener("pointermove", (e) => {
   let delta = g.deg - drag.startAngle;
   if (delta > 180) delta -= 360;
   if (delta < -180) delta += 360;
-  const next = snapToStep(drag.startMax * 10 ** (delta / 360));
+  const next = snapToStep(drag.startMax * 10 ** (delta / MOD));
   if (next === drag.live) return;
   drag.live = next;
   applyMax(drag.live, false);
@@ -591,7 +591,7 @@ dial.addEventListener("wheel", (e) => {
 
 const savedMax = Number(localStorage.getItem("load-rule-max"));
 const savedPct = Number(localStorage.getItem("load-rule-pct"));
-if (Number.isFinite(savedMax) && savedMax >= 20 && savedMax <= 200) {
+if (Number.isFinite(savedMax) && savedMax >= MIN && savedMax <= MAX) {
   state.maxKg = snapKg(savedMax);
   state.draft = formatKg(state.maxKg);
 }
